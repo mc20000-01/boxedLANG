@@ -1,0 +1,11 @@
+ask what~is~your~name
+box msg|hello~$name~how~are~you?
+say $msg|1
+del name
+del msg
+test test|55|>|6|yes|no
+say $test|1
+mark test
+math result|10|20|-
+say $result|1
+jump test|m
