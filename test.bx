@@ -1,4 +1,4 @@
 ask truth
 mark 1
 say $truth
-if truth|==|1|jump|1|m
+if $truth|==|1|jump|1|m

@@ -82,24 +82,24 @@ def handle_command(command, boxes, marks):
 						l = int(get_arg(0, args, boxes)) - 1
 				case "if":
 					run = False
-					match get_arg(3, args, boxes):
+					match get_arg(2, args, boxes):
 						case "==":
-							if get_arg(1, args, boxes) == get_arg(2, args, boxes):								
+							if get_arg(0, args, boxes) == get_arg(3, args, boxes):								
 								run = True
 						case "!=":
-							if get_arg(1, args, boxes) != get_arg(2, args, boxes):
+							if get_arg(0, args, boxes) != get_arg(3, args, boxes):
 								run = True
 						case ">":
-							if float(get_arg(1, args, boxes)) > float(get_arg(2, args, boxes)):
+							if float(get_arg(0, args, boxes)) > float(get_arg(3, args, boxes)):
 								run = True
 						case "<":
-							if float(get_arg(1, args, boxes)) < float(get_arg(2, args, boxes)):
+							if float(get_arg(0, args, boxes)) < float(get_arg(3, args, boxes)):
 								run = True
 						case ">=":
-							if float(get_arg(1, args, boxes)) >= float(get_arg(2, args, boxes)):
+							if float(get_arg(0, args, boxes)) >= float(get_arg(3, args, boxes)):
 								run = True
 						case "<=":
-							if float(get_arg(1, args, boxes)) <= float(get_arg(2, args, boxes)):
+							if float(get_arg(0, args, boxes)) <= float(get_arg(3, args, boxes)):
 								run = True
 					if run == True:
 						cm_torn = get_arg(4, args, boxes)
