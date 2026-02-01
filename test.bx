@@ -1,12 +1,12 @@
-ask what~is~your~name
-box msg|hello~$name~how~are~you?
-say $msg|1
-del name
-del msg
-test test|55|>|6|yes|no
-say $test|1
-mark test
-jump 10
-math result|10|20|-
-say $result|1
-jump test|m
+box usr|sandisk
+box pwd|1234
+
+ask username
+aks password
+
+test usr|$username|==|$usr|true|false
+test pwd|$password|==|$pwd|true|false
+say $usr~$pwd
+del usr 
+del pwd
+jump 1

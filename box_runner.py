@@ -80,5 +80,5 @@ def run_boxed_code(boxed_code):
 		print(Back.RED + Fore.WHITE + "at line : " + str(l) + "  " + str(bx2json.undo_mk([boxed_code[l]])) + Style.RESET_ALL)
 			
 
-print(Fore.GREEN + "RUNNING " + sys.argv[1] + Style.RESET_ALL)
+print(Back.BLUE + Fore.GREEN + "RUNNING " + sys.argv[1] + Style.RESET_ALL)
 run_boxed_code(CODE)
