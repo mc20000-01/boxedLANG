@@ -22,7 +22,7 @@ def get_arg(argnumb, args,boxes):
 			arg = "ERROR : " + cur_box
 	return arg
 		
-def handle_command(command, boxes, marks):
+def handle_command(command, boxes, marks,l = 0):
 	try:
 		args = command['args']
 		match command['cmd']:
@@ -127,7 +127,7 @@ def run_boxed_code(boxed_code):
 	while l < len(boxed_code)-1:
 		l = l + 1
 		cur_line = boxed_code[l]
-		handle_command(cur_line, boxes, marks)
+		handle_command(cur_line, boxes, marks, l)
 
 print(Back.BLUE + Fore.GREEN + "RUNNING " + sys.argv[1] + Style.RESET_ALL)
 run_boxed_code(CODE)
