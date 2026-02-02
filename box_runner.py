@@ -80,7 +80,7 @@ def handle_command(command):
 				case "wait":
 					time.sleep(float(get_arg(0, args, boxes)))
 				case "mark":
-					marks = marks | {get_arg(0, args, boxes): l + 1}	
+					marks = marks | {get_arg(0, args, boxes): l }	
 				case "jump":
 					if get_arg(1 ,args, boxes) == "m":
 						l = marks[get_arg(0, args, boxes)]
@@ -108,21 +108,13 @@ def handle_command(command):
 							if float(get_arg(0, args, boxes)) <= float(get_arg(2, args, boxes)):
 								run = True
 					if run == True:
-						cm_torn = get_arg(3, args, boxes)
+						cm_torn = get_arg(3, args, boxes) + " "
 						i = 3
-						while get_arg(i, args, boxes) != "":
-							i = 4
-							if i > 4:
-								cm_torn = cm_torn + "|" + get_arg(i, args, boxes)
-								i = i + 1
-							else:
-								print(cm_torn)
-								cm_torn = cm_torn + " " + get_arg(i, args, boxes)
-								i = i + 1
-							
-						cm_torn = bx2json.mk(cm_torn)[0]
-						print(cm_torn)
-						handle_command(cm_torn, boxes, marks)
+						while i <= len(args)-1:
+							i = i + 1
+							cm_torn = cm_torn + get_arg(i, args, boxes) + "|"
+						cm_torn = bx2json.mk(cm_torn)[1]
+						handle_command(cm_torn)
 	except Exception as e:
 		print(Back.RED + Fore.WHITE + "ERROR : " + str(e) + Style.RESET_ALL)
 		print(Back.RED + Fore.WHITE + "at line : " + str(l) + "  " + str(bx2json.undo_mk([command]))  + "boxes : " + str(boxes) + Style.RESET_ALL)
@@ -137,7 +129,6 @@ def run_boxed_code(boxed_code):
 	while l < len(boxed_code)-1:
 		l = l + 1
 		cur_line = boxed_code[l]
-		print(cur_line)
 		handle_command(cur_line)
 
 print(Back.BLUE + Fore.GREEN + "RUNNING " + sys.argv[1] + Style.RESET_ALL)
