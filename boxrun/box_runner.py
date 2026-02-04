@@ -1,14 +1,15 @@
 import pathlib 
+from os.path import expanduser
 from colorama import Fore, Back, Style
 import time
 import sys
-import box_to_json as bx2json
+import boxcode.boxrun.box_to_json as bx2json
 
 boxes = {}
 marks = {}
 l = -1
 
-CODE = pathlib.Path(sys.argv[1]).read_text()
+CODE = pathlib.Path(expanduser(sys.argv[1])).read_text()
 CODE = bx2json.mk(CODE)
 
 def get_arg(argnumb, args,boxes):
