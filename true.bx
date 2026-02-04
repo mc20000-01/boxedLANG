@@ -1,0 +1,5 @@
+box true|0
+ask true
+mark 1
+say $true
+jumpif $true|==|1|1|m

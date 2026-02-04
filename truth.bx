@@ -1,5 +1,0 @@
-box truth|0
-ask truth
-mark 1
-say $truth
-jumpif $truth|==|1|1|m
