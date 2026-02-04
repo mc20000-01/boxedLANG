@@ -1,0 +1,11 @@
+box name|data
+say data|time
+ask question
+del name
+test boxname|data1|data2|op|iftrue|iffalse
+math boxname|number1|operator|number2
+wait time
+mark label
+jump label/line|ismark
+if data1|data2|op|cmd|arg1|arg2|arg3|ect
+jumpif data1|data2|op|label/line|ismark
