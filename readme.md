@@ -1,30 +1,13 @@
+# install
 
-## 📥 How to Download
-
-### Option 1: Clone the Repository
-
+### linux/mac/windows
 ```sh
 git clone https://github.com/mc20000-01/boxedLANG-py.git
-cd boxedLANG-py
+cd boxedlang
+pip install -e .
 ```
-### Option 2: Download ZIP
 
-Go to the repository on GitHub: https://github.com/mc20000-01/boxedLANG-py
-
-Click Code → Download ZIP
-
-Extract the ZIP and open the folder
-
-### 🛠 Requirements
-
-Python 3.x installed
-
-# ▶️ How to Use
-Run boxedLANG Code
+# use
 ```sh
-python box_runner.py path/to/file.bx
-```
-Example:
-```sh
-python box_runner.py test.bx
+boxrun path/to/file.bx
 ```
