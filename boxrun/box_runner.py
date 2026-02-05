@@ -3,7 +3,7 @@ import os.path
 from colorama import Fore, Back, Style
 import time
 import sys
-from . box_to_json import mk
+from . box_to_json import mk, undo_mk
 
 boxes = {}
 marks = {}
@@ -105,7 +105,7 @@ def handle_command(command):
 						while i <= len(args)-1:
 							i = i + 1
 							cm_torn = cm_torn + get_arg(i, args, boxes) + "|"
-						cm_torn = bx2json.mk(cm_torn)[1]
+						cm_torn = mk(cm_torn)[1]
 						handle_command(cm_torn)
 				case "jumpif":
 					jump = test(get_arg(0, args, boxes), get_arg(2, args, boxes), get_arg(1, args, boxes))
@@ -116,7 +116,7 @@ def handle_command(command):
 							l = int(get_arg(3, args, boxes))
 	except Exception as e:
 		print(Back.RED + Fore.WHITE + "ERROR : " + str(e) + Style.RESET_ALL)
-		print(Back.RED + Fore.WHITE + "at line : " + str(l) + "  " + str(bx2json.undo_mk([command]))  + "boxes : " + str(boxes) + Style.RESET_ALL)
+		print(Back.RED + Fore.WHITE + "at line : " + str(l) + "  " + str(undo_mk([command]))  + "boxes : " + str(boxes) + Style.RESET_ALL)
 
 
 
