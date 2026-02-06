@@ -8,7 +8,7 @@ import os.path
 
 def main():
     CODE = file.Path(os.path.expanduser(sys.argv[1])).resolve().read_text()
-    bxr.run_boxed_code(CODE)
+    bxr.start_boxed_code(CODE,sys.argv[1])
 
 
 if __name__ == "__main__":

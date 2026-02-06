@@ -115,8 +115,9 @@ def handle_command(command):
 						else:
 							l = int(get_arg(3, args, boxes))
 	except Exception as e:
-		print(Back.RED + Fore.WHITE + "ERROR : " + str(e) + Style.RESET_ALL)
-		print(Back.RED + Fore.WHITE + "at line : " + str(l) + "  " + str(undo_mk([command]))  + "boxes : " + str(boxes) + Style.RESET_ALL)
+		print(Back.RED + Fore.WHITE + "ERROR : " + str(e))
+		print(Back.RED + Fore.WHITE + "at line : " + str(l) + "  " + str(undo_mk([command]))  + "boxes : " + str(boxes) + "  marks : " + str(marks))
+		print("raw cmd : " + str(command) + Style.RESET_ALL)
 
 
 
@@ -126,12 +127,18 @@ def run_boxed_code(boxed_code):
 	global boxes
 	global marks
 	global l
+	for m in boxed_code:
+		marks = marks | m['marks']
+	l = 0
 	while l < len(boxed_code)-1:
 		l = l + 1
 		cur_line = boxed_code[l]
 		handle_command(cur_line)
 
+def start_boxed_code(boxed_code, name):
+	print(Back.BLUE + Fore.GREEN + "RUNNING " + name + Style.RESET_ALL)
+	run_boxed_code(boxed_code)
+
 
 if __name__ == "__main__":
-	print(Back.BLUE + Fore.GREEN + "RUNNING " + sys.argv[1] + Style.RESET_ALL)
-	run_boxed_code(CODE)
+	start_boxed_code(CODE, sys.argv[1])

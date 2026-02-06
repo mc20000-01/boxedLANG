@@ -1,13 +1,18 @@
 def pull_cmd_from(box_line, ln=0):
     data = box_line.split(" ")
     cmd = data[0] #gets command from box standard
+    if cmd == "premark":
+        marks = {data[1]: ln}
+        print ("marked " + str(marks))
+    else:
+        marks = {}
     lenth = len(data)
     args = data[lenth - 1].split("|") #splits args from box standerd
-    json = {"cmd": cmd,"args": args, "ln": ln} #makes the json to be run / decoeded further
+    json = {"cmd": cmd,"args": args, "ln": ln, "marks": marks} #makes the json to be run / decoeded further
     return json
 
 def make_code_from(code):
-    made_code = [{'cmd': 'null', 'args': ['start'], 'ln': 0},]
+    made_code = [{'cmd': 'null', 'args': ['start'], 'ln': 0, 'marks': {}},]
     code = code.splitlines()
     for l in code:
         cur_line = l
