@@ -53,10 +53,12 @@ premark end //end app
 end now
 
 premark boot 
-del name
-del data
 ask name~of~app
 jump app-$app|m
+box name|
+box data|
+box note|
+box ?|
 jump boot|m
 
 premark filesys-setup
