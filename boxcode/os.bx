@@ -17,7 +17,8 @@ premark notes-w //wright a note
 say /!\pls~name~things~note-"name"/!\|0
 ask note~name
 ask note
-box :$name|$note
+box $name|$note
+say done~wrighting|0
 jump boot|m
 premark notes-r //read a note
 say /!\pls~addrese~things~note-"name"/!\|0
@@ -32,19 +33,28 @@ jump files-:$?|m
 permark files-r
 say /!\pls~addrese~things~file-"name"/!\|0
 ask name
-say $file-:$name|0
+say $name|0
 jump boot|m
 premark files-w
 say /!\pls~name~things~file-"name"/!\|0
 ask name
 ask data
+box $name|$data
 say done~wrighting|0
+jump boot|m
+premark files-d
+ask name
+ask are~you~sure~yes(y)/no(n)~?
+if $?|==|y|del|$name
+say done~deleting|0
 jump boot|m
 
 premark end //end app
 end now
 
 premark boot 
+del name
+del data
 ask name~of~app
 jump app-$app|m
 jump boot|m
