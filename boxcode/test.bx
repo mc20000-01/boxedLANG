@@ -8,6 +8,21 @@ math calc|$#1|$#2|$op
 say $calc
 jump boot|m
 
+premark note
+ask wright(w)/read(r)~?
+jump notes-:$?|m
+premark notes-w
+ask note~name
+ask note
+box $name|$note
+jump boot|m
+
+premark notes-r
+ask name
+say name
+say $$name
+jump boot|m
+
 premark end
 end now
 

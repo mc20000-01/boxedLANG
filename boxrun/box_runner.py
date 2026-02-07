@@ -13,12 +13,16 @@ CODE = file.Path(os.path.expanduser(sys.argv[1])).resolve().read_text()
 
 def get_arg(argnumb, args,boxes):
 	try:
-		arg = args[argnumb]  
+		arg = args[argnumb]
 		for i in range(0, arg.count("$")):
-			cur_box = arg.split("$")[1]
-			cur_box = cur_box.split("~")[0]
-			cur_box = cur_box.split(":")[0]
+			cur_box = arg.split("$")[arg.count("$") - 2]
+			print("cur_box : " + cur_box)
+			if "~" in cur_box:
+				cur_box = cur_box.split("~")[0]
+			if ":" in cur_box:
+				cur_box = cur_box.split(":")[0]
 			arg = arg.replace("$" + cur_box, boxes[cur_box])
+			print(arg)
 		arg = arg.replace("~", " ")
 		arg = arg.replace(":", "")
 	except IndexError:
