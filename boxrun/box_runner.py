@@ -114,6 +114,8 @@ def handle_command(command):
 							l = marks[get_arg(3, args, boxes)]
 						else:
 							l = int(get_arg(3, args, boxes))
+				case "end":
+					exit()
 	except Exception as e:
 		print(Back.RED + Fore.WHITE + "ERROR : " + str(e))
 		print(Back.RED + Fore.WHITE + "at line : " + str(l) + "  " + str(undo_mk([command]))  + "boxes : " + str(boxes) + "  marks : " + str(marks))

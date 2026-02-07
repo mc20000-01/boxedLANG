@@ -2,8 +2,7 @@ def pull_cmd_from(box_line, ln=0):
     data = box_line.split(" ")
     cmd = data[0] #gets command from box standard
     if cmd == "premark":
-        marks = {data[1]: ln}
-        print ("marked " + str(marks))
+        marks = {data[1]: ln + 1}
     else:
         marks = {}
     lenth = len(data)

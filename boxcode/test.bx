@@ -1,4 +1,17 @@
-jump test|m
-say did~not~work|1
-premark test
-say worked|1
+jump boot|m
+
+premark calc
+ask #1
+ask op
+ask #2
+math calc|$#1|$#2|$op
+say $calc
+jump boot|m
+
+premark end
+end now
+
+premark boot
+ask app
+jump $app|m
+jump boot|m
