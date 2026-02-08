@@ -1,4 +1,7 @@
 box  🌑🐀💻🏳️‍🌈|test
 box |blank
 say $🌑🐀💻🏳️‍🌈|0
-say $
+say $|0
+ask 
+say $|0
+del 
