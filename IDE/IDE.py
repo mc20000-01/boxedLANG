@@ -24,9 +24,9 @@ root.geometry("800x600")
 editor = scrolledtext.ScrolledText(root, height=20)
 editor.pack(fill=tk.BOTH, expand=True)
 
-editor.tag_config('keyword', foreground='blue')
+editor.tag_config('keyword', foreground='green')
 editor.tag_config('operator', foreground='red')
-editor.tag_config('variable', foreground='green')
+editor.tag_config('variable', foreground='teal')
 editor.tag_config('special', foreground='purple')
 
 
