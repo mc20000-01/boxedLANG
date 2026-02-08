@@ -1,0 +1,32 @@
+keywords:
+  - say
+  - ask
+  - box
+  - del
+  - jump
+  - mark
+  - premark
+  - jumpif
+  - test
+  - if
+  - math
+  - wait
+
+operators:
+  - "+"
+  - "-"
+  - "*"
+  - "/"
+  - "=="
+  - "!="
+  - ">"
+  - "<"
+  - ">="
+  - "<="
+
+variables:
+  prefix: "$"
+
+special_symbols:
+  - "~"
+  - "|"
