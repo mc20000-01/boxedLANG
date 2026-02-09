@@ -97,14 +97,15 @@ def open_code():
         except Exception as e:
             print(f"Open failed\n{str(e)}")
 
+
+run_btn = tk.Button(text="Run", command=run_code, foreground=text, background=back2)
+run_btn.pack(anchor="ne", padx=3, pady=3)
+
 save_btn = tk.Button(text="Save", command=save_code, foreground=text, background=back2)
-save_btn.pack(side="left", anchor="nw", padx=3, pady=3)
+save_btn.pack(before=run_btn, side="left", anchor="nw", padx=3, pady=3)
 
 open_btn = tk.Button(text="Open", command=open_code, foreground=text, background=back2)
 open_btn.pack(after=save_btn, anchor="w", padx=3, pady=3)
-
-run_btn = tk.Button(text="Run", command=run_code, foreground=text, background=back2)
-run_btn.pack(after=open_btn, padx=3, pady=3)
 
 editor = scrolledtext.ScrolledText(root, height=20,background=back1, foreground=text)
 editor.pack(fill=tk.BOTH, expand=True)
