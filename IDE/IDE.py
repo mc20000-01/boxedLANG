@@ -104,9 +104,9 @@ open_btn = tk.Button(text="Open", command=open_code, foreground=text, background
 open_btn.pack(after=save_btn, anchor="w", padx=3, pady=3)
 
 run_btn = tk.Button(text="Run", command=run_code, foreground=text, background=back2)
-run_btn.pack(side="top", anchor="ne", padx=3, pady=3)
+run_btn.pack(after=open_btn, padx=3, pady=3)
 
-editor = scrolledtext.ScrolledText(root, height=20,background=back1)
+editor = scrolledtext.ScrolledText(root, height=20,background=back1, foreground=text)
 editor.pack(fill=tk.BOTH, expand=True)
 
 editor.tag_config('keyword', foreground='green')
