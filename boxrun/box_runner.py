@@ -23,6 +23,9 @@ def get_arg(argnumb, args,boxes):
 			arg = arg.replace("$" + cur_box, boxes[cur_box])
 		arg = arg.replace("~", " ")
 		arg = arg.replace(":", "")
+		for i in range(0, arg.count("🗕")):
+			cur = arg.split("🗕")[1]
+			arg = arg.replace("🗕" + cur, str(len(str(cur))))
 	except IndexError:
 			arg = ""
 	return arg
@@ -70,7 +73,7 @@ def math(numb1,numb2,op):
 		return int(numb1) + int(numb2)
 	elif op == "-":
 		return int(numb1) - int(numb2)
-	elif op == "*":
+	elif op == "*" or "x":
 		return int(numb1) * int(numb2)
 	elif op == "/":
 		return int(numb1) / int(numb2)
@@ -84,34 +87,34 @@ def handle_command(command):
 	try:
 		args = command['args']
 		match command['cmd']:
-				case "box":
+				case "box" | "b":
 					boxes = boxes | {get_arg(0, args, boxes): get_arg(1, args, boxes)}
-				case "say":
+				case "say" | "s":
 					print(str(get_arg(0, args, boxes)))
 					if len(args) > 1:
 						time.sleep(float(get_arg(1, args, boxes)))
-				case "ask":
+				case "ask" | "a":
 					temp = get_arg(0, args, boxes).split(" ")
 					boxes = boxes | {temp[len(temp)-1]: input(get_arg(0, args, boxes) + " : ")}
-				case "del":
+				case "del" | "d":
 					del boxes[get_arg(0, args, boxes)]
-				case "test":
+				case "test" | "t":
 					if test(get_arg(0, args, boxes), get_arg(1, args, boxes), get_arg(3, args, boxes)) == True:
 						boxes = boxes | {get_arg(0, args, boxes): get_arg(4, args, boxes)}
 					else:
 						boxes = boxes | {get_arg(0, args, boxes): get_arg(5, args, boxes)}
-				case "math":
+				case "math" | "m":
 					boxes = boxes | {get_arg(0, args, boxes): str(math(get_arg(1, args, boxes),get_arg(2, args, boxes),get_arg(3, args, boxes)))}
-				case "wait":
+				case "wait" | "wt":
 					time.sleep(float(get_arg(0, args, boxes)))
-				case "mark":
+				case "mark" | "mk":
 					marks = marks | {get_arg(0, args, boxes): l }	
-				case "jump":
+				case "jump" | "j":
 					if get_arg(1 ,args, boxes) == "m":
 						l = marks[get_arg(0, args, boxes)]
 					else:
 						l = int(get_arg(0, args, boxes)) - 1
-				case "if":
+				case "if" | "i":
 					run = test(get_arg(0, args, boxes), get_arg(2, args, boxes), get_arg(1, args, boxes))
 					if run == True:
 						cm_torn = get_arg(3, args, boxes) + " "
@@ -121,15 +124,17 @@ def handle_command(command):
 							cm_torn = cm_torn + get_arg(i, args, boxes) + "|"
 						cm_torn = mk(cm_torn)[1]
 						handle_command(cm_torn)
-				case "jumpif":
+				case "jumpif" | "ji":
 					jump = test(get_arg(0, args, boxes), get_arg(2, args, boxes), get_arg(1, args, boxes))
 					if jump == True:
 						if get_arg(4, args, boxes) == "m":
 							l = marks[get_arg(3, args, boxes)]
 						else:
 							l = int(get_arg(3, args, boxes))
-				case "end":
+				case "end" | "e":
 					exit()
+				case "weigh" | "wh":
+					boxes = boxes | {get_arg(1,args,boxes): str(len(str(get_arg(0,args,boxes))))}
 	except Exception as e:
 		print(Back.RED + Fore.WHITE + "ERROR : " + str(e))
 		print(Back.RED + Fore.WHITE + "at line : " + str(l) + "  " + str(undo_mk([command]))  + "boxes : " + str(boxes) + "  marks : " + str(marks))

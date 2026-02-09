@@ -50,7 +50,7 @@ if $?|==|y|del|$name
 say done~deleting|0
 jump boot|m
 
-premark end //end app
+premark app-end //end app
 end now
 
 premark boot 
@@ -64,4 +64,5 @@ jump boot|m
 
 premark filesys-setup
 box file-usr|$login
+say 🗕$file-usr
 jump boot|m

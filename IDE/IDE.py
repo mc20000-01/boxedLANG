@@ -135,14 +135,13 @@ def open_code():
         except Exception as e:
             print(f"Open failed\n{str(e)}")
 
-
 save_btn = tk.Button(root, text="Save", command=save_code)
-save_btn.pack(side=tk.LEFT, padx=5, pady=5)
+save_btn.pack(side=tk.LEFT, padx=5, pady=3)
 
 open_btn = tk.Button(root, text="Open", command=open_code)
-open_btn.pack(side=tk.LEFT, padx=5, pady=5)
+open_btn.pack(side=tk.LEFT, padx=5, pady=3)
 
 run_btn = tk.Button(root, text="Run", command=run_code)
-run_btn.pack(side=tk.LEFT, padx=5, pady=5)
+run_btn.pack(side=tk.LEFT, padx=5, pady=3)
 
 root.mainloop()
