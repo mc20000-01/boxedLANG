@@ -109,6 +109,8 @@ def handle_command(command):
 					time.sleep(float(get_arg(0, args, boxes)))
 				case "mark" | "mk":
 					marks = marks | {get_arg(0, args, boxes): l }	
+				case "premark":
+					marks = marks | {get_arg(0, args, boxes): l }	
 				case "jump" | "j":
 					if get_arg(1 ,args, boxes) == "m":
 						l = marks[get_arg(0, args, boxes)]

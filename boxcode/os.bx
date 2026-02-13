@@ -7,10 +7,10 @@ box file-usr|usr:~$login~~~pwd:~$password
 test lg|$login|admin|==|1|0
 test in|$password|1234|==|1|0
 math loggedin|$lg|$in|+
-if $loggedin|==|2|jump|boot|m
+if $loggedin|==|2|jump|loggedin|m
 say bad~login~or~error|0
 say ending~os~loop|0
-if $loggedin|!=|2|jump|app-end|m
+if $loggedin|!=|2|jump|loggedfail|m
 
 
 premark app-calc //calculator app
@@ -23,20 +23,20 @@ jump boot|m
 
 
 premark app-note //note app
+premark app-notes
 ask write(w)/read(r)~?
 jump notes-:$?|m
-premark notes-w //write a note
 
-say /!\pls~name~things~note-"name"/!\|0
+premark notes-w //write a note
 ask note~name
 ask note
-box $name|$note
+box note-:$name|$note
 say done~writing|0
 jump boot|m
-premark notes-r //read a note
 
-say /!\pls~addrese~things~note-"name"/!\|0
+premark notes-r //read a note
 ask name
+box name|note-:$name
 say |0
 say $name|0
 say --------------|0
@@ -45,14 +45,14 @@ say |0
 jump boot|m
 
 
-premark app-file
+premark app-file //file app
 premark app-files
 ask read(r)/write(w)/del(d)~?
 jump files-:$?|m
 
 premark files-r
-say /!\pls~addrese~things~file-"name"/!\|0
 ask name
+box name|file-:$name
 say |0
 say $name|0
 say --------------|0
@@ -61,16 +61,17 @@ say |0
 jump boot|m
 
 premark files-w
-say /!\pls~name~things~file-"name"/!\|0
 ask name
 ask data
-box $name|$data
+box file-:$name|$data
 say done~writing|0
 jump boot|m
 
 premark files-d
 ask name
 ask are~you~sure~yes(y)/no(n)~?
+box name|file-:$name
+if $?|==|n|jump|boot|m
 if $?|==|y|del|$name
 say done~deleting|0
 jump boot|m
@@ -88,3 +89,15 @@ box data|
 box note|
 box ?|
 jump boot|m
+say error~loop~ended
+end now
+
+premark loggedin
+say |0
+say welcome~$login|0
+say |0
+jump boot|m
+
+premark loggedfail
+say loggin~fail
+end now
