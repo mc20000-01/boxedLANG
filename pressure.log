@@ -1,0 +1,3 @@
+2026-02-13 20:46:35,570  ============================================================
+2026-02-13 20:46:35,570  PaintPro pressure session started
+2026-02-13 20:46:35,570  evdev init failed: [Errno 13] Permission denied: '/dev/input/event5'

@@ -6,7 +6,7 @@ An interpreted programming language with a box-based paradigm. boxedLANG provide
 
 ## Overview
 
-boxedLANG is a lightweight scripting language designed for educational purposes and simple automation tasks. Programs are written in files with a `.bx` extension and executed through the boxrun interpreter.
+boxedLANG is a lightweight scripting language made by jamie designed for educational purposes and simple automation tasks. Programs are written in files with a `.bx` extension and executed through the boxrun interpreter.
 
 ## Installation
 
