@@ -9,8 +9,6 @@ boxes = {}
 marks = {}
 l = -1
 
-CODE = file.Path(os.path.expanduser(sys.argv[1])).resolve().read_text()
-
 def get_arg(argnumb, args,boxes):
 	try:
 		arg = str(args[argnumb])
@@ -174,6 +172,7 @@ def start_boxed_code(boxed_code, name):
 
 
 if __name__ == "__main__":
+	CODE = file.Path(os.path.expanduser(sys.argv[1])).resolve().read_text()
 	try:
 		start_boxed_code(CODE, sys.argv[1])
 	except KeyboardInterrupt:

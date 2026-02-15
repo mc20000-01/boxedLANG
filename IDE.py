@@ -3,13 +3,12 @@ from tkinter import scrolledtext, filedialog
 import re
 import sys
 import subprocess
-from interpreter.box_to_py import to_py
 import yaml
-from interpreter import box_to_json as b2j
+from boxrun import box_runner as boxrun
 import atexit
 import os
 
-with open(os.path.expanduser("~/boxedLANG/IDE/BoxSyntax.yaml")) as f:
+with open(os.path.expanduser("~/boxedLANG/BoxSyntax.yaml")) as f:
     syntax = yaml.safe_load(f)
 
 
@@ -28,45 +27,8 @@ root.geometry("800x600")
 
 def run_code():
     code = editor.get("1.0", tk.END).rstrip()
-
-    try:
-        code_json = b2j.make_code_from(code)
-        py_code = "import time\n" + to_py(code_json)
-    except Exception as e:
-        print(f"Translation failed: {str(e)}")
-        return
-
-    temp_file = "temp_run_boxed.py"
-    def cleanup_temp():
-        try:
-            os.remove(temp_file)
-        except:
-            pass
-
-    atexit.register(cleanup_temp)
-    try:
-        with open(temp_file, "w", encoding="utf-8") as f:
-            f.write(py_code)
-
-        if sys.platform == "win32":
-            subprocess.Popen(
-                ["cmd", "/k", "python", temp_file, "&", "pause"],
-                creationflags=subprocess.CREATE_NEW_CONSOLE
-            )
-        elif sys.platform == "darwin":
-            script = f'python3 "{temp_file}" ; echo ; echo "Press Enter to close..." ; read'
-            subprocess.Popen(["osascript", "-e", f'tell application "Terminal" to do script "{script}"'])
-        else:
-            try:
-                subprocess.Popen(["x-terminal-emulator", "-e", f"python3 {temp_file} ; read -p 'Press Enter...'"])
-            except:
-                try:
-                    subprocess.Popen(["gnome-terminal", "--", "bash", "-c", f"python3 {temp_file} ; read -p 'Press Enter...'"])
-                except:
-                    print("Couldn't open terminal. Run manually: python3 temp_run_boxed.py")
-
-    except Exception as e:
-        print(f"Failed to start run: {str(e)}")
+    output = boxrun(code)
+    print(output)
 
 def save_code():
     file_path = filedialog.asksaveasfilename(
