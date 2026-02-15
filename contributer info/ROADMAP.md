@@ -48,12 +48,12 @@ boxedLANG aims to be an accessible, educational programming language with a uniq
 - Visual debugging tools
 
 **Planned Features**:
-- [ ] Error reporting with line numbers and context
-- [ ] REPL (read-eval-print loop) mode
-- [ ] Debugger with breakpoints
-- [ ] Additional example programs
-- [ ] Syntax highlighting for common editors
-- [ ] Better variable inspection tools
+- ☑ Error reporting with line numbers and context
+- ☐ REPL (read-eval-print loop) mode
+- ☐ Debugger with breakpoints
+- ☐ Additional example programs
+- ☐ Syntax highlighting for common editors
+- ☐ Better variable inspection tools
 
 **Estimated Timeline**: Q2-Q3 2025
 
@@ -68,13 +68,13 @@ boxedLANG aims to be an accessible, educational programming language with a uniq
 - Testing framework
 
 **Candidate Features**:
-- [ ] String manipulation functions
-- [ ] List/array support
-- [ ] Function definitions and calls
-- [ ] File I/O operations
-- [ ] Module import system
-- [ ] Built-in libraries
-- [ ] Performance profiling tools
+- ☐ String manipulation functions
+- ☐ List/array support
+- ☐ Function definitions and calls
+- ☐ File I/O operations
+- ☐ Module import system
+- ☐ Built-in libraries
+- ☐ Performance profiling tools
 
 **Estimated Timeline**: Q4 2025 - Q1 2026
 
@@ -89,12 +89,12 @@ boxedLANG aims to be an accessible, educational programming language with a uniq
 - Stability and maintenance
 
 **Planned Initiatives**:
-- [ ] Package registry for shareware programs
-- [ ] Official VSCode extension
-- [ ] Web-based playground
-- [ ] Community example collection
-- [ ] Educational curriculum materials
-- [ ] Official language specification
+- ☐ Package registry for shareware programs
+- ☐ Official VSCode extension
+- ☐ Web-based playground
+- ☐ Community example collection
+- ☐ Educational curriculum materials
+- ☐ Official language specification
 
 **Estimated Timeline**: 2026+
 
