@@ -99,10 +99,10 @@ def open_code():
 
 
 run_btn = tk.Button(text="Run", command=run_code, foreground=text, background=back2)
-run_btn.pack(anchor="ne", padx=3, pady=3)
+run_btn.pack(side=tk.TOP, anchor="ne", padx=3, pady=3)
 
 save_btn = tk.Button(text="Save", command=save_code, foreground=text, background=back2)
-save_btn.pack(before=run_btn, side="left", anchor="nw", padx=3, pady=3)
+save_btn.pack(before=run_btn, side=tk.LEFT, anchor="nw", padx=3, pady=3)
 
 open_btn = tk.Button(text="Open", command=open_code, foreground=text, background=back2)
 open_btn.pack(after=save_btn, anchor="w", padx=3, pady=3)
