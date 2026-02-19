@@ -17,7 +17,7 @@ boxedLANG is a lightweight scripting language made by jamie designed for educati
 ### Setup
 
 ```sh
-git clone https://github.com/mc20000-01/boxedLANG-py.git
+git clone https://github.com/mc20000-01/boxedLANG.git
 cd boxedLANG-py
 pip install -e .
 ```
