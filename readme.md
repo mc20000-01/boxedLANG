@@ -46,8 +46,8 @@ boxrun path/to/program.bx
 
 - `say` - Output text to console
   ```
-  say hello,~world!
-  say message|1
+  say hello,~world!|0
+  say message|time
   ```
 
 - `ask` - Request user input and store in a box
