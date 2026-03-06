@@ -6,12 +6,8 @@ import argparse
 import pathlib as file
 import os.path
 
-def main():
-    parser = argparse.ArgumentParser(description="boxedLANG interpreter")
-    parser.add_argument("file", help="path to the boxedLANG source file to run")
-    args = parser.parse_args()
-    CODE = str(file.Path(os.path.expanduser(args.file)).read_text())
-    bxr.start_boxed_code(CODE, args.file)
+def main(code):
+    bxr.start_boxed_code(code, args.file)
 
 
 if __name__ == "__main__":
@@ -19,7 +15,8 @@ if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description="boxedLANG interpreter")
 	parser.add_argument("file", help="path to the boxedLANG source file to run")
 	args = parser.parse_args()
+    CODE = str(file.Path(os.path.expanduser(args.file)).resolve().read_text())
 	try:
-		main()
+		main(CODE)
 	except KeyboardInterrupt:
 		print("KeyboardInterrupt by user")
