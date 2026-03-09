@@ -8,7 +8,11 @@ def pull_cmd_from(box_line, ln=0):
     data = box_line.split(" ",maxsplit=1)
     cmd = data[0] #gets command from box standard
     length = len(data)
-    args = data[length - 1].split("|") #splits args from box standerd
+    try:
+        args = data[length - 1].split("|") #splits args from box standerd
+    except IndexError:
+        args = []
+    
     if cmd == "premark":
         marks = {data[1]: ln + 1}
     else:
