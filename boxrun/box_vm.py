@@ -6,6 +6,33 @@ import sys
 from . box_to_json import mk, undo_mk
 import argparse
 
+import threading, queue
+
+class BoxedVM:
+    def __init__(self):
+        # Two mailboxes
+        self.inbox  = queue.Queue()  # you → VM
+        self.outbox = queue.Queue()  # VM → you    
+    def start(self, code):
+        # Run the VM in the background so both sides work at once
+        t = threading.Thread(target=self._run, args=(code,), daemon=True)
+        t.start()
+    def send(self, data):
+        # YOU drop something in the VM's mailbox
+        self.inbox.put(data)
+    def recv(self):
+        # YOU check your mailbox, waits if nothing is there yet
+        return self.outbox.get()
+    def _vm_send(self, data):
+        # VM drops something in YOUR mailbox
+        self.outbox.put(data)
+    def _vm_recv(self):
+        # VM checks its mailbox, waits if nothing is there yet
+        return self.inbox.get()
+    def _run(self, code):
+		gloabl self
+		run_boxed_code(code)
+
 boxes = {}
 marks = {}
 l = -1
@@ -89,7 +116,7 @@ def handle_command(command):
 				case "box" | "b":
 					boxes = boxes | {get_arg(0, args, boxes): get_arg(1, args, boxes)}
 				case "say" | "s":
-					print(str(get_arg(0, args, boxes)))
+					self._vm_send({"say": get_arg(0, args, boxes), "time": get_arg(1, args, boxes)})
 					if len(args) > 1 and type(get_arg(1, args, boxes) == "number"):
 						time.sleep(float(get_arg(1, args, boxes)))
 				case "ask" | "a":
