@@ -9,7 +9,8 @@ import argparse
 import threading, queue
 
 class BoxedVM:
-    global def __init__(self):
+    global __init__
+	def __init__(self):
         # Two mailboxes
         self.inbox  = queue.Queue()  # you → VM
         self.outbox = queue.Queue()  # VM → you    
