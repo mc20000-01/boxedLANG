@@ -300,8 +300,7 @@ def run_boxed_code(vm: BoxedVM, boxed_code: list) -> None:
     global marks
     global line_index
     boxed_code = mk(boxed_code)
-    for m in boxed_code:
-        marks = marks | m["marks"]
+    marks = boxed_code[-1]['marks']
     line_index = 0
     while line_index < len(boxed_code) - 1:
         line_index += 1
