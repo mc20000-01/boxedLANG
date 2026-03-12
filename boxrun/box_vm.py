@@ -9,7 +9,6 @@ import argparse
 import threading, queue
 
 class BoxedVM:
-	global __init__
 	def __init__(self, inbox = queue.Queue(), outbox = queue.Queue()):
 		self.inbox = inbox
 		self.outbox = outbox
@@ -196,6 +195,6 @@ def run_boxed_code(boxed_code):
 		handle_command(cur_line)
 
 def start_boxed_code(boxed_code, name):
-	__init__()
+	vm = BoxedVM()
 	print(Back.BLUE + Fore.GREEN + "RUNNING " + name + Style.RESET_ALL)
 	run_boxed_code(boxed_code)
