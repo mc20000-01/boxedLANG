@@ -1,10 +1,9 @@
-from .box_rs import BoxedRS as bxrs
+from bx_rs import BoxedRS as bxrs
 import pathlib as file
 import os.path
 from colorama import Fore, Back, Style
 import time
 import sys
-from .box_to_json import mk, undo_mk
 import argparse
 
 parser = argparse.ArgumentParser(description="boxedLANG interpreter")
