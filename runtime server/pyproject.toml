@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bx_rs"
+version = "0.1.0"
+description = "Internal logic for boxedLANG"
+readme = "README.md"
+requires-python = ">=3.7"
+# Add any libraries your code needs here:
+dependencies = [
+    # "requests", 
+]
+
+[tool.setuptools]
+# This tells Python to look for the 'bx_rs' folder
+packages = ["bx_rs"]
+
+[tool.setuptools.package-data]
+# If you have non-python files (like .rs or .txt) include them here
+"*" = ["*.py"]
