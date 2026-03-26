@@ -143,32 +143,3 @@ say did~not~work|1
 premark test
 ```
 
-## Project Structure
-
-```
-boxedLANG-py/
-├── boxrun/                 # Interpreter implementation
-│   ├── main.py            # Entry point
-│   ├── box_runner.py      # Execution engine
-│   ├── box_to_json.py     # Code parser
-│   └── __init__.py
-├── boxcode/               # Example programs
-│   ├── hello.bx
-│   ├── test.bx
-│   ├── all_cmds.bx
-│   ├── true.bx
-│   └── false.bx
-├── pyproject.toml         # Project configuration
-└── readme.md
-```
-
-## Development
-
-The interpreter works in two stages:
-
-1. **Parsing**: The `box_to_json.py` module converts `.bx` source code into an intermediate JSON representation
-2. **Execution**: The `box_runner.py` module executes the parsed instructions, managing boxes and executing commands
-
-## License
-
-See project repository for license information.
