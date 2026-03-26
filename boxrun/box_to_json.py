@@ -30,13 +30,13 @@ def pull_cmd_from(box_line, ln=0):
 
 def make_code_from(code):
     global lpv
-    marked = []
+    marked = {}
     made_code = [{'cmd': 'null', 'args': ['start'], 'ln': 0, 'marks': {}},]
     code = code.splitlines()
     for l in code:
         cur_line_json  = pull_cmd_from(l, ln=code.index(l))
         if cur_line_json['marks'] != {}:
-            marked = marked + [cur_line_json['marks']]
+            marked = marked | cur_line_json['marks']
             del cur_line_json['marks']
         made_code = made_code  + [cur_line_json]
     made_code = made_code + [{"marks": marked}]

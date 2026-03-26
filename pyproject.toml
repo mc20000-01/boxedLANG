@@ -3,9 +3,9 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "boxrun"
+name = "bx_rs"
 version = "0.1.0"
-description = "boxedLANG interpreter"
+description = "boxedLANG runtime server"
 readme = "readme.md"
 requires-python = ">=3.8"
 
@@ -14,7 +14,7 @@ dependencies = [
 ]
 
 [project.scripts]
-boxrun = "boxrun.main:main"
+boxrun = "boxrun.box_rs"
 
 [tool.setuptools]
 packages = ["boxrun"]

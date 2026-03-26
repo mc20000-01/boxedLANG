@@ -10,6 +10,7 @@ from colorama import Fore, Back, Style
 import time
 import threading
 import queue
+import traceback
 from .box_to_json import mk, undo_mk
 
 
@@ -214,12 +215,12 @@ def handle_command(RS: BoxedRS, command: dict) -> None:
             case "wait" | "wt":
                 time.sleep(float(get_arg(0, args, boxes)))
             case "mark" | "mk":
-                marks = marks + [{get_arg(0, args, boxes): line_index}]
+                marks = marks | {get_arg(0, args, boxes): line_index}
             case "premark":
-                marks = marks + [{get_arg(0, args, boxes): line_index}]
+                marks = marks | {get_arg(0, args, boxes): line_index}
             case "jump" | "j":
                 if get_arg(1, args, boxes) == "m":
-                    l = marks[get_arg(0, args, boxes)]
+                    l = marks[str(get_arg(0, args, boxes))]
                 else:
                     l = int(get_arg(0, args, boxes)) - 1
             case "if" | "i":
@@ -244,11 +245,11 @@ def handle_command(RS: BoxedRS, command: dict) -> None:
                 )
                 if jump == True:
                     if get_arg(4, args, boxes) == "m":
-                        l = marks[get_arg(3, args, boxes)]
+                        l = marks[str(get_arg(3, args, boxes))]
                     else:
                         l = int(get_arg(3, args, boxes))
             case "end" | "e":
-                self._RS_send({"cmd": "end"})
+                RS._RS_send({"cmd": "end"})
             case "weigh" | "wh":
                 boxes = boxes | {
                     get_arg(1, args, boxes): str(len(str(get_arg(0, args, boxes))))
@@ -264,7 +265,14 @@ def handle_command(RS: BoxedRS, command: dict) -> None:
                     boxes = boxes | {arg1: val}
                     print(boxes)
     except Exception as e:
-        print(Back.RED + Fore.WHITE + "ERROR : " + str(e))
+        print(
+            Back.RED 
+            + Fore.WHITE
+            + "PY ERROR : " 
+            + str(e)
+            + "/n"
+            + traceback.format_exc()
+            )
         print(
             Back.RED
             + Fore.WHITE
