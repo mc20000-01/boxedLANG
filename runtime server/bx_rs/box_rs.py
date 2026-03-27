@@ -75,7 +75,7 @@ def get_arg(argnumb, args, boxes):
             if ":" in cur_box:
                 cur_box = cur_box.split(":")[0]
             arg = arg.replace("$" + cur_box, boxes[cur_box])
-        arg = arg.replace("~", " ")
+        arg = arg.replace("~", "")
         arg = arg.replace(":", "")
         for i in range(0, arg.count("🗕")):
             cur = arg.split("🗕")[1]

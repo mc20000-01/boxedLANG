@@ -23,7 +23,7 @@ def main():
                 time.sleep(int("0" + cur["time"]))
 
             case "ask":
-                rs.send(input(cur["ask"] + ": "))
+                rs.send(input(cur["ask"] + ":"))
 
             case "end":
                 exit()
