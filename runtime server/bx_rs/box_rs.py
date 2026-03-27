@@ -184,9 +184,8 @@ def handle_command(RS: BoxedRS, command: dict) -> None:
             case "ask" | "a":
                 temp = get_arg(0, args, boxes).split(" ")
                 RS._RS_send({"cmd": "ask", "ask": get_arg(0, args, boxes)})
-                boxes = boxes | ({
-                    temp[len(temp) - 1]: RS._RS_recv() + " : "
-                })
+                rec = RS._RS_recv()
+                boxes = boxes | ({temp[len(temp) - 1]: rec})
             case "del" | "d":
                 del boxes[get_arg(0, args, boxes)]
             case "test" | "t":
