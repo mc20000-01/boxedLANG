@@ -5,7 +5,7 @@ Note from Stormy:
     Please for goodness sake stop using global variables, they're gross,
     just pass them as function parameters smh.
 """
-
+import pathlib as pth
 from colorama import Fore, Back, Style
 import time
 import threading
@@ -13,6 +13,9 @@ import queue
 import traceback
 from .box_to_json import mk, undo_mk
 
+install_loc = pth.Path("~/.bx/pack/").expanduser()
+installed_loc = pth.Path(str(install_loc) + "/installed.json").expanduser()
+installed_packs = json.loads(str(installed_loc.read_text(encoding="utf-8")))
 
 boxes = {}
 marks = {}
